@@ -1,0 +1,19 @@
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Runtime output and user uploads
+*.log
+logs/
+assets/uploads/*
+!assets/uploads/.htaccess
+
+# Local tooling and temporary files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.bak
+*.backup
+*.old

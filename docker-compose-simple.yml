@@ -1,0 +1,123 @@
+# ============================================
+# Docker Compose - Website Desa (SIMPLE VERSION)
+# Tanpa ProxySQL - Direct MySQL Connection
+# ============================================
+
+# ==========================================
+# SERVICES DEFINITION
+# ==========================================
+services:
+  
+  # ==========================================
+  # WEB SERVER SERVICE (PHP + Apache)
+  # ==========================================
+  webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: desa-webserver
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      - TZ=Asia/Jakarta
+      - PHP_MEMORY_LIMIT=256M
+      - PHP_UPLOAD_MAX_FILESIZE=10M
+      - PHP_POST_MAX_SIZE=12M
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_USER=desa_user
+      - DB_PASS=desa_pass_2024
+      - DB_NAME=db_desa_sejahtera
+    volumes:
+      - ./:/var/www/html
+      - webserver-logs:/var/log/apache2
+      - uploads-data:/var/www/html/assets/uploads
+    networks:
+      - desa-network
+    depends_on:
+      mysql:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health.php"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # ==========================================
+  # DATABASE SERVICE (MySQL 8.0)
+  # ==========================================
+  mysql:
+    image: mysql:8.0
+    container_name: desa-mysql
+    restart: unless-stopped
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password_secure_2024
+      MYSQL_DATABASE: db_desa_sejahtera
+      MYSQL_USER: desa_user
+      MYSQL_PASSWORD: desa_pass_2024
+      TZ: Asia/Jakarta
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./database.sql:/docker-entrypoint-initdb.d/database.sql
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/custom.cnf
+    networks:
+      - desa-network
+    command: 
+      - --default-authentication-plugin=mysql_native_password
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --max_connections=200
+      - --innodb_buffer_pool_size=256M
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot_password_secure_2024"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # ==========================================
+  # PHPMYADMIN SERVICE (Optional)
+  # ==========================================
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: desa-phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: root_password_secure_2024
+      UPLOAD_LIMIT: 50M
+      MEMORY_LIMIT: 256M
+      MAX_EXECUTION_TIME: 300
+    networks:
+      - desa-network
+    depends_on:
+      - mysql
+
+# ==========================================
+# NETWORKS DEFINITION
+# ==========================================
+networks:
+  desa-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.0.0/16
+
+# ==========================================
+# VOLUMES DEFINITION (Persistent Data)
+# ==========================================
+volumes:
+  mysql-data:
+    driver: local
+  webserver-logs:
+    driver: local
+  uploads-data:
+    driver: local

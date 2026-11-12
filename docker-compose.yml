@@ -1,0 +1,183 @@
+# ============================================
+# Docker Compose - Website Desa Sejahtera
+# Multi-Container Architecture with ProxySQL
+# ============================================
+
+# ============================================
+# SERVICES DEFINITION
+# ============================================
+services:
+  
+  # ==========================================
+  # WEB SERVER SERVICE (PHP + Apache)
+  # ==========================================
+  webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: desa-webserver
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      - TZ=Asia/Jakarta
+      - PHP_MEMORY_LIMIT=256M
+      - PHP_UPLOAD_MAX_FILESIZE=10M
+      - PHP_POST_MAX_SIZE=12M
+    volumes:
+      - ./:/var/www/html
+      - webserver-logs:/var/log/apache2
+      - uploads-data:/var/www/html/assets/uploads
+    networks:
+      - desa-network
+    depends_on:
+      mysql:
+        condition: service_healthy
+      proxysql:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health.php"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    labels:
+      - "com.desa.service=webserver"
+      - "com.desa.description=PHP Apache Web Server"
+
+  # ==========================================
+  # DATABASE SERVICE (MySQL 8.0)
+  # ==========================================
+  mysql:
+    image: mysql:8.0
+    container_name: desa-mysql
+    restart: unless-stopped
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password_secure_2024
+      MYSQL_DATABASE: db_desa_sejahtera
+      MYSQL_USER: desa_user
+      MYSQL_PASSWORD: desa_pass_2024
+      TZ: Asia/Jakarta
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./database.sql:/docker-entrypoint-initdb.d/database.sql
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/custom.cnf
+    networks:
+      - desa-network
+    command: 
+      - --default-authentication-plugin=mysql_native_password
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --max_connections=200
+      - --innodb_buffer_pool_size=256M
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot_password_secure_2024"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    labels:
+      - "com.desa.service=database"
+      - "com.desa.description=MySQL Database Server"
+
+  # ==========================================
+  # DATABASE PROXY SERVICE (ProxySQL)
+  # ==========================================
+  proxysql:
+    image: proxysql/proxysql:2.5.5
+    container_name: desa-proxysql
+    restart: unless-stopped
+    ports:
+      - "6033:6033"  # ProxySQL MySQL interface
+      - "6032:6032"  # ProxySQL Admin interface
+    environment:
+      - TZ=Asia/Jakarta
+    volumes:
+      - proxysql-data:/var/lib/proxysql
+      - ./docker/proxysql/proxysql.cnf:/etc/proxysql.cnf
+    networks:
+      - desa-network
+    depends_on:
+      mysql:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "mysql -h 127.0.0.1 -P 6033 -uroot -proot_password_secure_2024 -e 'SELECT 1' || exit 1"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 40s
+    labels:
+      - "com.desa.service=proxy"
+      - "com.desa.description=ProxySQL Database Proxy & Load Balancer"
+
+  # ==========================================
+  # PHPMYADMIN SERVICE (Optional - Database Management)
+  # ==========================================
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: desa-phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: root_password_secure_2024
+      UPLOAD_LIMIT: 50M
+      MEMORY_LIMIT: 256M
+      MAX_EXECUTION_TIME: 300
+    networks:
+      - desa-network
+    depends_on:
+      - mysql
+    labels:
+      - "com.desa.service=phpmyadmin"
+      - "com.desa.description=Database Management Interface"
+
+# ============================================
+# NETWORKS DEFINITION
+# ============================================
+networks:
+  desa-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.0.0/16
+    labels:
+      - "com.desa.network=main"
+      - "com.desa.description=Main network for Desa services"
+
+# ============================================
+# VOLUMES DEFINITION (Persistent Data)
+# ============================================
+volumes:
+  # MySQL data persistence
+  mysql-data:
+    driver: local
+    labels:
+      - "com.desa.volume=mysql-data"
+      - "com.desa.description=MySQL database persistent storage"
+  
+  # ProxySQL data persistence
+  proxysql-data:
+    driver: local
+    labels:
+      - "com.desa.volume=proxysql-data"
+      - "com.desa.description=ProxySQL configuration persistent storage"
+  
+  # Web server logs
+  webserver-logs:
+    driver: local
+    labels:
+      - "com.desa.volume=webserver-logs"
+      - "com.desa.description=Apache web server logs"
+  
+  # Uploaded files persistence
+  uploads-data:
+    driver: local
+    labels:
+      - "com.desa.volume=uploads-data"
+      - "com.desa.description=User uploaded files storage"

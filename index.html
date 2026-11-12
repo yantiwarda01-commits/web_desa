@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Desa Sejahtera Maju</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER / NAVBAR ===== -->
+  <header class="header" id="header">
+    <nav class="navbar container">
+      <div class="nav-logo">
+        <div class="logo-icon">
+          <i class="fas fa-landmark"></i>
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">Desa Sejahtera</span>
+          <span class="logo-subtitle">Kec. Maju Jaya</span>
+        </div>
+      </div>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home" class="nav-link active">Beranda</a></li>
+        <li><a href="#profil" class="nav-link">Profil</a></li>
+        <li><a href="#layanan" class="nav-link">Layanan</a></li>
+        <li><a href="#berita" class="nav-link">Berita</a></li>
+        <li><a href="#galeri" class="nav-link">Galeri</a></li>
+        <li><a href="#kontak" class="nav-link">Kontak</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#layanan" class="btn btn-primary">
+          <i class="fas fa-file-alt"></i> Ajukan Surat
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero" id="home">
+    <div class="hero-bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+    <div class="container hero-content">
+      <div class="hero-text">
+        <span class="hero-badge">
+          <i class="fas fa-star"></i> Desa Digital Terbaik 2024
+        </span>
+        <h1 class="hero-title">
+          Selamat Datang di <br/>
+          <span class="highlight">Desa Sejahtera</span>
+          <br/>yang Maju & Berdaya
+        </h1>
+        <p class="hero-desc">
+          Desa kami berkomitmen untuk memberikan pelayanan publik terbaik,
+          transparan, dan mudah diakses oleh seluruh warga. Bersama membangun
+          desa yang mandiri dan sejahtera.
+        </p>
+        <div class="hero-buttons">
+          <a href="#layanan" class="btn btn-primary btn-lg">
+            <i class="fas fa-concierge-bell"></i> Lihat Layanan
+          </a>
+          <a href="#profil" class="btn btn-outline btn-lg">
+            <i class="fas fa-info-circle"></i> Tentang Desa
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">4.820</span>
+            <span class="stat-label">Jumlah Penduduk</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number">12</span>
+            <span class="stat-label">RT / RW</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number">98%</span>
+            <span class="stat-label">Kepuasan Warga</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-img-wrapper">
+          <div class="hero-img-bg"></div>
+          <div class="hero-img-card">
+            <div class="village-illustration">
+              <div class="illustration-sky">
+                <div class="sun"></div>
+                <div class="cloud cloud-1"></div>
+                <div class="cloud cloud-2"></div>
+              </div>
+              <div class="illustration-ground">
+                <div class="building balai-desa">
+                  <div class="building-roof"></div>
+                  <div class="building-body">
+                    <div class="window"></div>
+                    <div class="door"></div>
+                    <div class="window"></div>
+                  </div>
+                  <div class="building-label">Balai Desa</div>
+                </div>
+                <div class="building rumah">
+                  <div class="building-roof small"></div>
+                  <div class="building-body small">
+                    <div class="door small"></div>
+                  </div>
+                </div>
+                <div class="tree">
+                  <div class="tree-top"></div>
+                  <div class="tree-trunk"></div>
+                </div>
+                <div class="tree tree-2">
+                  <div class="tree-top"></div>
+                  <div class="tree-trunk"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="floating-card card-pengumuman">
+            <i class="fas fa-bell"></i>
+            <span>Pengumuman Terbaru</span>
+          </div>
+          <div class="floating-card card-online">
+            <i class="fas fa-wifi"></i>
+            <span>Layanan Online 24/7</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROFIL DESA ===== -->
+  <section class="profil section" id="profil">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Profil Kami</span>
+        <h2 class="section-title">Mengenal <span class="highlight">Desa Sejahtera</span></h2>
+        <p class="section-desc">Desa Sejahtera berdiri sejak tahun 1945, dengan semangat gotong royong yang kuat dan kekayaan alam yang melimpah.</p>
+      </div>
+      <div class="profil-grid">
+        <div class="profil-card">
+          <div class="profil-icon green">
+            <i class="fas fa-history"></i>
+          </div>
+          <h3>Sejarah Desa</h3>
+          <p>Desa Sejahtera didirikan pada 17 Agustus 1945 oleh para pejuang lokal yang berkomitmen membangun komunitas mandiri dan gotong royong.</p>
+        </div>
+        <div class="profil-card">
+          <div class="profil-icon blue">
+            <i class="fas fa-map-marked-alt"></i>
+          </div>
+          <h3>Letak Geografis</h3>
+          <p>Terletak di Kecamatan Maju Jaya, dengan luas wilayah 450 Ha, dikelilingi perbukitan hijau dan aliran sungai yang jernih.</p>
+        </div>
+        <div class="profil-card">
+          <div class="profil-icon orange">
+            <i class="fas fa-bullseye"></i>
+          </div>
+          <h3>Visi & Misi</h3>
+          <p>Mewujudkan Desa Sejahtera yang mandiri, berbudaya, dan berdaya saing menuju masyarakat yang adil dan makmur.</p>
+        </div>
+        <div class="profil-card">
+          <div class="profil-icon purple">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Struktur Pemerintahan</h3>
+          <p>Dipimpin oleh Kepala Desa beserta perangkat desa yang profesional dan berkomitmen melayani masyarakat dengan sepenuh hati.</p>
+        </div>
+      </div>
+
+      <!-- Kepala Desa Highlight -->
+      <div class="kades-card">
+        <div class="kades-info">
+          <div class="kades-avatar">
+            <i class="fas fa-user-tie"></i>
+          </div>
+          <div class="kades-detail">
+            <span class="kades-label">Kepala Desa</span>
+            <h3>Bapak Ahmad Santoso, S.IP</h3>
+            <p>Menjabat sejak 2021 — Periode 2021-2027</p>
+            <blockquote>"Bersama warga, kita wujudkan desa yang mandiri, inovatif, dan bermartabat."</blockquote>
+          </div>
+        </div>
+        <div class="kades-contacts">
+          <a href="tel:+6281234567890" class="contact-pill">
+            <i class="fas fa-phone"></i> +62 812-3456-7890
+          </a>
+          <a href="mailto:kades@desasejahtera.id" class="contact-pill">
+            <i class="fas fa-envelope"></i> kades@desasejahtera.id
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LAYANAN SECTION ===== -->
+  <section class="layanan section" id="layanan">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Layanan Publik</span>
+        <h2 class="section-title">Layanan <span class="highlight">Administrasi</span> Desa</h2>
+        <p class="section-desc">Semua layanan administratif kini tersedia secara online maupun langsung di kantor desa kami.</p>
+      </div>
+      <div class="layanan-grid">
+        <div class="layanan-card">
+          <div class="layanan-icon">
+            <i class="fas fa-id-card"></i>
+          </div>
+          <h3>Surat Keterangan Domisili</h3>
+          <p>Proses pengurusan surat domisili cepat dan mudah, cukup bawa KTP dan KK.</p>
+          <div class="layanan-meta">
+            <span class="badge-time"><i class="far fa-clock"></i> 1 Hari Kerja</span>
+            <span class="badge-free"><i class="fas fa-tag"></i> Gratis</span>
+          </div>
+          <a href="#kontak" class="btn btn-sm btn-primary">Ajukan Sekarang</a>
+        </div>
+        <div class="layanan-card featured">
+          <div class="featured-label">Populer</div>
+          <div class="layanan-icon">
+            <i class="fas fa-file-signature"></i>
+          </div>
+          <h3>Surat Pengantar KTP/KK</h3>
+          <p>Layanan pengantar untuk pembuatan KTP dan Kartu Keluarga di Disdukcapil.</p>
+          <div class="layanan-meta">
+            <span class="badge-time"><i class="far fa-clock"></i> 1 Hari Kerja</span>
+            <span class="badge-free"><i class="fas fa-tag"></i> Gratis</span>
+          </div>
+          <a href="#kontak" class="btn btn-sm btn-primary">Ajukan Sekarang</a>
+        </div>
+        <div class="layanan-card">
+          <div class="layanan-icon">
+            <i class="fas fa-home"></i>
+          </div>
+          <h3>Surat Keterangan Tidak Mampu</h3>
+          <p>Untuk keperluan beasiswa, bantuan sosial, dan fasilitas kesehatan gratis.</p>
+          <div class="layanan-meta">
+            <span class="badge-time"><i class="far fa-clock"></i> 2 Hari Kerja</span>
+            <span class="badge-free"><i class="fas fa-tag"></i> Gratis</span>
+          </div>
+          <a href="#kontak" class="btn btn-sm btn-primary">Ajukan Sekarang</a>
+        </div>
+        <div class="layanan-card">
+          <div class="layanan-icon">
+            <i class="fas fa-baby"></i>
+          </div>
+          <h3>Surat Kelahiran</h3>
+          <p>Pengurusan surat pengantar akta kelahiran untuk bayi baru lahir di wilayah desa.</p>
+          <div class="layanan-meta">
+            <span class="badge-time"><i class="far fa-clock"></i> 1 Hari Kerja</span>
+            <span class="badge-free"><i class="fas fa-tag"></i> Gratis</span>
+          </div>
+          <a href="#kontak" class="btn btn-sm btn-primary">Ajukan Sekarang</a>
+        </div>
+        <div class="layanan-card">
+          <div class="layanan-icon">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <h3>Surat Keterangan Usaha</h3>
+          <p>Untuk UMKM dan usaha kecil yang membutuhkan legalitas dokumen resmi.</p>
+          <div class="layanan-meta">
+            <span class="badge-time"><i class="far fa-clock"></i> 2 Hari Kerja</span>
+            <span class="badge-free"><i class="fas fa-tag"></i> Gratis</span>
+          </div>
+          <a href="#kontak" class="btn btn-sm btn-primary">Ajukan Sekarang</a>
+        </div>
+        <div class="layanan-card">
+          <div class="layanan-icon">
+            <i class="fas fa-scroll"></i>
+          </div>
+          <h3>Surat Keterangan Lainnya</h3>
+          <p>Berbagai surat keterangan sesuai kebutuhan warga: izin keramaian, pindah, dll.</p>
+          <div class="layanan-meta">
+            <span class="badge-time"><i class="far fa-clock"></i> 1-3 Hari Kerja</span>
+            <span class="badge-free"><i class="fas fa-tag"></i> Gratis</span>
+          </div>
+          <a href="#kontak" class="btn btn-sm btn-primary">Hubungi Kami</a>
+        </div>
+      </div>
+
+      <!-- Info Box -->
+      <div class="info-box">
+        <div class="info-box-icon"><i class="fas fa-info-circle"></i></div>
+        <div class="info-box-text">
+          <strong>Jam Pelayanan:</strong> Senin–Jumat, 08.00–15.00 WIB | 
+          <strong>Istirahat:</strong> 12.00–13.00 WIB | 
+          <strong>Sabtu–Minggu:</strong> Libur
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BERITA SECTION ===== -->
+  <section class="berita section" id="berita">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Informasi Terkini</span>
+        <h2 class="section-title">Berita & <span class="highlight">Pengumuman</span></h2>
+        <p class="section-desc">Ikuti perkembangan terbaru kegiatan dan informasi penting dari Desa Sejahtera.</p>
+      </div>
+      <div class="berita-grid">
+        <!-- Berita Utama -->
+        <article class="berita-card berita-featured">
+          <div class="berita-img-placeholder featured-img">
+            <i class="fas fa-tractor"></i>
+          </div>
+          <div class="berita-content">
+            <span class="berita-kategori green">Program Desa</span>
+            <h3>Peluncuran Program Pertanian Organik Desa Sejahtera Tahun 2026</h3>
+            <p>Desa Sejahtera secara resmi meluncurkan program pertanian organik perdana yang melibatkan 120 petani lokal dengan dukungan penuh dari Dinas Pertanian Kabupaten...</p>
+            <div class="berita-meta">
+              <span><i class="far fa-calendar"></i> 5 November 2026</span>
+              <span><i class="far fa-eye"></i> 1.234 views</span>
+            </div>
+            <a href="#" class="btn btn-sm btn-outline">Baca Selengkapnya</a>
+          </div>
+        </article>
+
+        <!-- Berita Kecil -->
+        <div class="berita-side">
+          <article class="berita-card berita-small">
+            <div class="berita-img-placeholder small-img orange">
+              <i class="fas fa-award"></i>
+            </div>
+            <div class="berita-content">
+              <span class="berita-kategori orange">Prestasi</span>
+              <h4>Desa Sejahtera Raih Penghargaan Desa Digital Terbaik Kabupaten 2026</h4>
+              <div class="berita-meta">
+                <span><i class="far fa-calendar"></i> 1 Nov 2026</span>
+              </div>
+            </div>
+          </article>
+          <article class="berita-card berita-small">
+            <div class="berita-img-placeholder small-img blue">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="berita-content">
+              <span class="berita-kategori blue">Pendidikan</span>
+              <h4>Pembukaan PAUD Gratis untuk Warga Kurang Mampu Tahun Ajaran 2026/2027</h4>
+              <div class="berita-meta">
+                <span><i class="far fa-calendar"></i> 28 Okt 2026</span>
+              </div>
+            </div>
+          </article>
+          <article class="berita-card berita-small">
+            <div class="berita-img-placeholder small-img purple">
+              <i class="fas fa-tools"></i>
+            </div>
+            <div class="berita-content">
+              <span class="berita-kategori purple">Infrastruktur</span>
+              <h4>Proyek Pavingisasi Jalan Dusun RT 03 Dimulai Bulan Ini</h4>
+              <div class="berita-meta">
+                <span><i class="far fa-calendar"></i> 20 Okt 2026</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <a href="#" class="btn btn-outline">
+          <i class="fas fa-newspaper"></i> Lihat Semua Berita
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALERI SECTION ===== -->
+  <section class="galeri section" id="galeri">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Dokumentasi</span>
+        <h2 class="section-title">Galeri <span class="highlight">Kegiatan Desa</span></h2>
+        <p class="section-desc">Momen berharga dari berbagai kegiatan dan pembangunan di Desa Sejahtera.</p>
+      </div>
+      <div class="galeri-grid">
+        <div class="galeri-item large" data-label="Gotong Royong">
+          <div class="galeri-placeholder green">
+            <i class="fas fa-hands-helping"></i>
+            <span>Gotong Royong Warga</span>
+          </div>
+          <div class="galeri-overlay">
+            <i class="fas fa-search-plus"></i>
+            <span>Gotong Royong Warga</span>
+          </div>
+        </div>
+        <div class="galeri-item" data-label="HUT Desa">
+          <div class="galeri-placeholder orange">
+            <i class="fas fa-birthday-cake"></i>
+            <span>HUT Desa ke-79</span>
+          </div>
+          <div class="galeri-overlay">
+            <i class="fas fa-search-plus"></i>
+            <span>HUT Desa ke-79</span>
+          </div>
+        </div>
+        <div class="galeri-item" data-label="Posyandu">
+          <div class="galeri-placeholder blue">
+            <i class="fas fa-heartbeat"></i>
+            <span>Kegiatan Posyandu</span>
+          </div>
+          <div class="galeri-overlay">
+            <i class="fas fa-search-plus"></i>
+            <span>Kegiatan Posyandu</span>
+          </div>
+        </div>
+        <div class="galeri-item" data-label="Musrenbang">
+          <div class="galeri-placeholder purple">
+            <i class="fas fa-users"></i>
+            <span>Musrenbang 2026</span>
+          </div>
+          <div class="galeri-overlay">
+            <i class="fas fa-search-plus"></i>
+            <span>Musrenbang 2026</span>
+          </div>
+        </div>
+        <div class="galeri-item" data-label="Lomba">
+          <div class="galeri-placeholder red">
+            <i class="fas fa-trophy"></i>
+            <span>Lomba 17 Agustus</span>
+          </div>
+          <div class="galeri-overlay">
+            <i class="fas fa-search-plus"></i>
+            <span>Lomba 17 Agustus</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== KONTAK SECTION ===== -->
+  <section class="kontak section" id="kontak">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Hubungi Kami</span>
+        <h2 class="section-title">Kontak & <span class="highlight">Lokasi</span></h2>
+        <p class="section-desc">Kami siap membantu dan melayani Anda. Jangan ragu untuk menghubungi kami.</p>
+      </div>
+      <div class="kontak-grid">
+        <!-- Form -->
+        <div class="kontak-form-wrapper">
+          <h3>Kirim Pesan</h3>
+          <form class="kontak-form" id="kontakForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nama">Nama Lengkap</label>
+                <input type="text" id="nama" placeholder="Masukkan nama Anda" required />
+              </div>
+              <div class="form-group">
+                <label for="telp">No. Telepon</label>
+                <input type="tel" id="telp" placeholder="08xx-xxxx-xxxx" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="email@example.com" required />
+            </div>
+            <div class="form-group">
+              <label for="keperluan">Keperluan</label>
+              <select id="keperluan">
+                <option value="">-- Pilih Keperluan --</option>
+                <option>Pengajuan Surat</option>
+                <option>Informasi Layanan</option>
+                <option>Pengaduan</option>
+                <option>Lainnya</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="pesan">Pesan</label>
+              <textarea id="pesan" rows="4" placeholder="Tuliskan pesan atau keperluan Anda..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              <i class="fas fa-paper-plane"></i> Kirim Pesan
+            </button>
+          </form>
+        </div>
+
+        <!-- Info Kontak -->
+        <div class="kontak-info">
+          <div class="kontak-info-card">
+            <div class="kontak-item">
+              <div class="kontak-icon green">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <strong>Alamat Kantor</strong>
+                <p>Jl. Raya Desa Sejahtera No. 1, Kec. Maju Jaya, Kab. Contoh, Jawa Tengah 12345</p>
+              </div>
+            </div>
+            <div class="kontak-item">
+              <div class="kontak-icon blue">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div>
+                <strong>Telepon / WhatsApp</strong>
+                <p>+62 812-3456-7890</p>
+              </div>
+            </div>
+            <div class="kontak-item">
+              <div class="kontak-icon orange">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <strong>Email</strong>
+                <p>info@desasejahtera.id</p>
+              </div>
+            </div>
+            <div class="kontak-item">
+              <div class="kontak-icon purple">
+                <i class="far fa-clock"></i>
+              </div>
+              <div>
+                <strong>Jam Operasional</strong>
+                <p>Senin – Jumat: 08.00 – 15.00 WIB</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Map Placeholder -->
+          <div class="map-placeholder">
+            <i class="fas fa-map-marked-alt"></i>
+            <p>Peta Lokasi Kantor Desa</p>
+            <small>Klik untuk membuka di Google Maps</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="container footer-grid">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <div class="nav-logo footer-logo">
+            <div class="logo-icon white">
+              <i class="fas fa-landmark"></i>
+            </div>
+            <div class="logo-text">
+              <span class="logo-title">Desa Sejahtera</span>
+              <span class="logo-subtitle">Kec. Maju Jaya</span>
+            </div>
+          </div>
+          <p class="footer-desc">
+            Website resmi Desa Sejahtera, Kecamatan Maju Jaya. Melayani dengan sepenuh hati untuk kemajuan bersama.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4>Navigasi Cepat</h4>
+          <ul class="footer-links">
+            <li><a href="#home"><i class="fas fa-chevron-right"></i> Beranda</a></li>
+            <li><a href="#profil"><i class="fas fa-chevron-right"></i> Profil Desa</a></li>
+            <li><a href="#layanan"><i class="fas fa-chevron-right"></i> Layanan</a></li>
+            <li><a href="#berita"><i class="fas fa-chevron-right"></i> Berita</a></li>
+            <li><a href="#galeri"><i class="fas fa-chevron-right"></i> Galeri</a></li>
+          </ul>
+        </div>
+
+        <!-- Layanan -->
+        <div class="footer-col">
+          <h4>Layanan Utama</h4>
+          <ul class="footer-links">
+            <li><a href="#layanan"><i class="fas fa-chevron-right"></i> Surat Domisili</a></li>
+            <li><a href="#layanan"><i class="fas fa-chevron-right"></i> Pengantar KTP/KK</a></li>
+            <li><a href="#layanan"><i class="fas fa-chevron-right"></i> Surat Tidak Mampu</a></li>
+            <li><a href="#layanan"><i class="fas fa-chevron-right"></i> Surat Kelahiran</a></li>
+            <li><a href="#layanan"><i class="fas fa-chevron-right"></i> Surat Usaha</a></li>
+          </ul>
+        </div>
+
+        <!-- Kontak Footer -->
+        <div class="footer-col">
+          <h4>Kontak Kami</h4>
+          <ul class="footer-contact-list">
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Jl. Raya Desa Sejahtera No. 1, Kec. Maju Jaya</span>
+            </li>
+            <li>
+              <i class="fas fa-phone"></i>
+              <span>+62 812-3456-7890</span>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <span>info@desasejahtera.id</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-content">
+        <p>&copy; 2026 Desa Sejahtera, Kec. Maju Jaya. Semua hak cipta dilindungi.</p>
+        <p>Dibuat dengan <i class="fas fa-heart" style="color:#ef4444"></i> untuk warga desa</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label="Kembali ke atas">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+================================================================================
+   WEBSITE DESA - QUICK START GUIDE (Fixed Version 2.0)
+================================================================================
+
+🎉 500 ERROR SUDAH DIPERBAIKI! 
+
+================================================================================
+   DEPLOYMENT (PILIH SALAH SATU)
+================================================================================
+
+CARA 1: OTOMATIS (RECOMMENDED)
+-------------------------------
+.\DEPLOY.bat
+
+CARA 2: MANUAL
+--------------
+docker-compose -f docker-compose-simple.yml down
+docker-compose -f docker-compose-simple.yml build --no-cache
+docker-compose -f docker-compose-simple.yml up -d
+timeout /t 60 /nobreak
+start http://localhost:8080/debug-info.php
+
+================================================================================
+   TEST URLS
+================================================================================
+
+Debug Info:         http://localhost:8080/debug-info.php
+Connection Test:    http://localhost:8080/test-connection.php
+Health Check:       http://localhost:8080/health.php
+Main Website:       http://localhost:8080
+PhpMyAdmin:         http://localhost:8081
+                    User: root
+                    Pass: root_password_secure_2024
+
+================================================================================
+   CHECK STATUS
+================================================================================
+
+Container Status:   docker-compose -f docker-compose-simple.yml ps
+View Logs:          docker-compose -f docker-compose-simple.yml logs
+Follow Logs:        docker-compose -f docker-compose-simple.yml logs -f webserver
+
+Expected Status:
+  desa-mysql        Up (healthy)
+  desa-webserver    Up (healthy)
+  desa-phpmyadmin   Up
+
+================================================================================
+   TROUBLESHOOTING
+================================================================================
+
+Problem: 500 Error
+Solution: 
+  1. Wait 60 seconds for MySQL
+  2. docker-compose -f docker-compose-simple.yml restart webserver
+  3. Check: http://localhost:8080/debug-info.php
+
+Problem: Container Unhealthy
+Solution:
+  docker-compose -f docker-compose-simple.yml down -v
+  docker-compose -f docker-compose-simple.yml up -d
+
+Problem: Port Already Used
+Solution:
+  netstat -ano | findstr :8080
+  taskkill /PID <PID> /F
+
+Problem: Database Not Initialized
+Solution:
+  docker exec -i desa-mysql mysql -u root -proot_password_secure_2024 db_desa_sejahtera < database.sql
+
+================================================================================
+   CLEAN START (NUCLEAR OPTION)
+================================================================================
+
+docker-compose -f docker-compose-simple.yml down -v
+docker volume prune -f
+docker-compose -f docker-compose-simple.yml build --no-cache
+docker-compose -f docker-compose-simple.yml up -d
+timeout /t 60 /nobreak
+
+================================================================================
+   SUCCESS CHECKLIST
+================================================================================
+
+[✓] All containers showing Up/healthy
+[✓] http://localhost:8080/health.php shows "status": "ok"
+[✓] http://localhost:8080/debug-info.php shows CONNECTION SUCCESSFUL
+[✓] http://localhost:8080 loads website (no 500 error)
+[✓] No errors in docker-compose logs
+
+================================================================================
+   SECURITY (PRODUCTION)
+================================================================================
+
+After deployment sukses, HAPUS FILE DEBUGGING:
+  Remove-Item debug-info.php, test-connection.php
+
+Ganti passwords di docker-compose-simple.yml:
+  - MYSQL_ROOT_PASSWORD
+  - MYSQL_PASSWORD
+
+================================================================================
+   MORE HELP
+================================================================================
+
+DEPLOY-README.md        - Quick deployment guide
+TROUBLESHOOTING.md      - Detailed troubleshooting
+DOCKER-README.md        - Complete documentation
+
+================================================================================
+Version: 2.0 (Fixed) | Status: ✅ WORKING | Date: 2024-12-13
+================================================================================
